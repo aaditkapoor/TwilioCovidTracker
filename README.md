@@ -58,7 +58,7 @@ Inspired by package.json, I created a similar mechanism for the application. bui
 ```
 {
   "test": "python run.py"
- }
+}
  ```
  
  build.py is the script that matches all the commands and helps the user run the command.
