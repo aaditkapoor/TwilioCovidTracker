@@ -47,7 +47,7 @@ def sms_reply():
 
             # parse the message
             parser.parse()
-            
+
             # get country
             country = parser.getText()
             messageToSend = getMessage(country)
@@ -62,8 +62,3 @@ def sms_reply():
         return str(resp.message("Could not understand."))
 
 
-
-"""
-if __name__ == "__main__":
-    app.run(debug=True)
-"""
