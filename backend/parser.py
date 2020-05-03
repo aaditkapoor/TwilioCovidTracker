@@ -28,6 +28,7 @@ class BaseParser:
 class CountryParser(BaseParser):
     def __init__(self, parser:BaseParser):
         self.parser=parser
+        self.country = ""
     def parse(self):
         words = self.parser.message.split(" ")
         # show me stats for <country_name>

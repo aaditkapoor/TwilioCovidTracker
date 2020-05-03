@@ -44,6 +44,11 @@ def sms_reply():
     if message:
         if (isValidMessage(message)):
             parser = CountryParser(BaseParser(message))
+
+            # parse the message
+            parser.parse()
+            
+            # get country
             country = parser.getText()
             messageToSend = getMessage(country)
             # Add a message
