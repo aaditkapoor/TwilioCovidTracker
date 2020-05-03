@@ -4,6 +4,8 @@ from flask import request
 from flask import render_template
 from twilio.twiml.messaging_response import MessagingResponse
 from backend.sms import API, Sender
+from backend.models.data import Data
+
 app = Flask(__name__)
 
 @app.route("/")

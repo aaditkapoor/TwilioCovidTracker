@@ -9,12 +9,12 @@ import os
 import json
 import requests
 from typing import Dict
+from .models.data import Data
 from typing import List, Type
 from dataclasses import dataclass
 from twilio.rest import Client
 from sklearn.linear_model import LinearRegression
-from .secret import KEYS, convertDateToDay
-
+from .config.secret import KEYS, convertDateToDay
 
 client = Client(KEYS["account_sid"], KEYS["auth_token"])
 API_URL = "https://api.covid19api.com/live/country/"
@@ -31,42 +31,6 @@ class Sender:
                      to=to
                  )
         return message.sid
-
-# A representation for our data
-@dataclass
-class Data:
-    """
-        Representation of COVID data.
-    """
-    country:str
-    confirmed:str
-    deaths:str
-    recovered:str
-    active:str
-    date:str
-
-    def __str__(self):
-        return "stats for: " + self.country
-
-
-@dataclass
-class DataAggregator:
-    data:List[Data]
-
-    def add(self, object:Data):
-        self.data.append(object)
-    
-    def getByCountry(self, country) -> Data:
-        found = None
-        for i in self.data:
-            if i.country == country:
-                found=i
-                break
-        return found
-            
-    def getAllData(self):
-        return self.data
-
 
 class API:
     def __init__(self, country:str):
