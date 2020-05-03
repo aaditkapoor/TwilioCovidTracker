@@ -1,5 +1,8 @@
 {
     "mypy": "mypy app.py",
     "testrun":"echo test run the app",
-    "test_api": " python3 backend/test_sms.py"
+    "test_api": " python3 backend/test_sms.py",
+    "deploy": "git add . && git commit -m 'pushed on heroku' && git push heroku master",
+    "push": "git add . && git commit -m 'pushed code' && git push origin master"
+
 }
