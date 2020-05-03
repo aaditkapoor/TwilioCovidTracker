@@ -1,0 +1,5 @@
+{
+    "mypy": "mypy app.py",
+    "testrun":"echo test run the app",
+    "test_api": " python3 backend/test_sms.py"
+}
