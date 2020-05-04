@@ -1,5 +1,5 @@
 # TwilioCovidTracker
-A COVID Tracker that informs people COVID stats through SMS using the Twillio APIs.
+A COVID Tracker that informs people COVID stats through SMS using the Twilio APIs.
 The app can be seen as a chatbot but for the SMS platform. It features an API engine that sorts the data by country and sends it to user through SMS.
 Due to the limitaion of Twilio Trial Version, the app can only operate with a specific set of phone numbers.
 
