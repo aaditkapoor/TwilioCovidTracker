@@ -1,5 +1,5 @@
 # TwilioCovidTracker
-A COVID Tracker that informs people COVID stats through SMS using the Twillio APIs.
+A COVID Tracker that informs people COVID stats through SMS using the Twilio APIs.
 The app can be seen as a chatbot but for the SMS platform. It features an API engine that sorts the data by country and sends it to user through SMS.
 Due to the limitaion of Twilio Trial Version, the app can only operate with a specific set of phone numbers.
 
@@ -58,7 +58,7 @@ Inspired by package.json, I created a similar mechanism for the application. bui
 ```
 {
   "test": "python run.py"
- }
+}
  ```
  
  build.py is the script that matches all the commands and helps the user run the command.
@@ -69,6 +69,9 @@ To add a new command, just add it to the build.json
 # Try the app
 
 [SMS Covid Tracker] (https://twilio-covid-tracker.herokuapp.com/)
+
+# Demo
+[Youtube](https://www.youtube.com/watch?v=bKedoIgr8f0)
 
 # Future Directions
 
