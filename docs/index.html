@@ -1,0 +1,51 @@
+<h1 id="twiliocovidtracker">TwilioCovidTracker</h1>
+<p>A COVID Tracker that informs people COVID stats through SMS using the Twilio APIs. The app can be seen as a chatbot but for the SMS platform. It features an API engine that sorts the data by country and sends it to user through SMS. Due to the limitaion of Twilio Trial Version, the app can only operate with a specific set of phone numbers.</p>
+<p>The web application is built using Python3.8 conforming to the typing protocols and has a concrete object oriented design model.</p>
+<h1 id="directory-structure">Directory structure</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">├── <span class="kw">LICENSE</span>
+├── <span class="kw">Pipfile</span>
+├── <span class="kw">Pipfile.lock</span>
+├── <span class="kw">Procfile</span>
+├── <span class="kw">README.md</span>
+├── <span class="kw">app.py</span>
+├── <span class="kw">backend</span>
+│   ├── <span class="kw">__init__.py</span>
+│   ├── <span class="kw">config</span>
+│   │   ├── <span class="kw">__init__.py</span>
+│   │   └── <span class="kw">secret.py</span>
+│   ├── <span class="kw">models</span>
+│   │   ├── <span class="kw">__init__.py</span>
+│   │   └── <span class="kw">data.py</span>
+│   ├── <span class="kw">parser.py</span>
+│   ├── <span class="kw">sms.py</span>
+│   └── <span class="kw">test_sms.py</span>
+├── <span class="kw">build.json</span>
+├── <span class="kw">build.py</span>
+├── <span class="kw">runtime.txt</span>
+└── <span class="kw">templates</span>
+    ├── <span class="kw">about.html</span>
+    └── <span class="kw">index.html</span></code></pre>
+<p><b> backend: </b> All the backend related code <br> <b> app.py: </b> The main Flask App <br> <b> templates: </b> Templates for the project.</p>
+<h1 id="backend">Backend</h1>
+<p>All the source code for the backend lives in backend/. The app primarily uses Twilio API's to send and receive a message. It communicates with the COVID API using <a href="https://api.covid19api.com/">API</a>.</p>
+<p>The API class is API and below is a short example of how it building the message.</p>
+<pre><code>api = API(country=&quot;India&quot;)
+api.getAll() # Gather all the data and store in a list of Data Objects. See backend/models/data.py
+message = api.buildMessage() # Build the message that should be sent.</code></pre>
+<p>This API and the Twilio SMS Sending and Receiving API IS glued together in the main Flask app (app.py)</p>
+<h1 id="parser.py">parser.py</h1>
+<p>The <code>BaseParser</code> Class is the crux of the parsing a given message. Currently the functionality is limited to a single command (<code>&quot;show me stats for &lt;country_name&gt;&quot;</code>) but as the application grows we would be adding more contextual features.</p>
+<h1 id="build.py-and-build.json">build.py and build.json</h1>
+<p>Inspired by package.json, I created a similar mechanism for the application. build.json is a simple JSON file where each key is the name of command followed by the command. <code>{   &quot;test&quot;: &quot;python run.py&quot; }</code></p>
+<p>build.py is the script that matches all the commands and helps the user run the command. <code>python build.py test</code> will run the command &quot;python run.py&quot;</p>
+<p>To add a new command, just add it to the build.json</p>
+<h1 id="try-the-app">Try the app</h1>
+<p>[SMS Covid Tracker] (https://twilio-covid-tracker.herokuapp.com/)</p>
+<h1 id="demo">Demo</h1>
+<p><a href="https://www.youtube.com/watch?v=bKedoIgr8f0">Youtube</a></p>
+<h1 id="future-directions">Future Directions</h1>
+<p>Following are the future directions of the application: - A fully functional chatbot that also features a predictive engine. - Get COVID plots on your phone through SMS. - Remove the Trial Version.</p>
+<h1 id="license">LICENSE</h1>
+<p>Copyright 2020 Aadit Kapoor</p>
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p>http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
